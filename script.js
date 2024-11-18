@@ -25,8 +25,7 @@ if (buttonPomodoro.classList.contains('active')) {
 }
 
 buttonPomodoro.addEventListener("click", () => {
-    if (buttonPomodoro.classList.contains('active')) {
-    } else {
+    if (!buttonPomodoro.classList.contains('active')) {
         buttonPomodoro.classList.toggle("active");
         buttonBreak.classList.toggle("active");
         return pomodoroTime.setTimer();
@@ -34,8 +33,7 @@ buttonPomodoro.addEventListener("click", () => {
 });
 
 buttonBreak.addEventListener("click", () => {
-    if (buttonBreak.classList.contains('active')) {
-    } else {
+    if (!buttonBreak.classList.contains('active')) {
         buttonPomodoro.classList.toggle("active");
         buttonBreak.classList.toggle("active");
         return breakTime.setTimer();
@@ -90,8 +88,8 @@ function activeTimer() {
 function setTimer() {
     clearInterval(timerId);
     timeTimer.textContent = this.time;
-    let minutes = parseInt(timeTimer.textContent.substring(0, 2));
-    let seconds = parseInt(timeTimer.textContent.substring(3, 5));
+    const minutes = parseInt(timeTimer.textContent.substring(0, 2));
+    const seconds = parseInt(timeTimer.textContent.substring(3, 5));
     time = (minutes * 60) + seconds;
     buttonStart.textContent = "start";
     active = true;
